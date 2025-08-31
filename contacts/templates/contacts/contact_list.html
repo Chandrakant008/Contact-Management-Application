@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2>Contact Manager</h2>
+    <a class="btn btn-primary mb-3" href="{% url 'contact_create' %}">Add Contact</a>
+    <table class="table table-bordered">
+        <tr>
+            <th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Actions</th>
+        </tr>
+        {% for contact in contacts %}
+        <tr>
+            <td>{{ contact.first_name }}</td>
+            <td>{{ contact.last_name }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.phone_number }}</td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="{% url 'contact_update' contact.id %}">Edit</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'contact_delete' contact.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
